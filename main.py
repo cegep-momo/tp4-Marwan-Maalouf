@@ -1,5 +1,4 @@
 from controler.controler import Controler
-import LCD1602
 from model.platine import Platine
 from view.view import View
 

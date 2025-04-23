@@ -11,9 +11,10 @@ class View:
         self.lcd.clear()
         self.lcd.write(0, 0, message)
 
-    def afficher_mesure(self, mesure):
+    def afficher_mesure(self, mesure, date):
         self.lcd.clear()
-        self.lcd.write(0, 1, f"Mesure: \n{mesure}")
+        self.lcd.write(0, 0, date)
+        self.lcd.write(0, 1, f"Mesure:{mesure}")
 
     def clear(self):
         self.lcd.clear()

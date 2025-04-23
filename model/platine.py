@@ -12,15 +12,15 @@ class Platine:
 
     def start_measuring(self):
             distance = round(self.capteur.distance * 100, 2)
-            print(distance)
             sleep(5)
+            return distance
     def capture(self):
         distance = round(self.capteur.distance * 100, 2)
         return distance
 
     def bouton1_pressed(self):
-        self.start_measuring()
-
+        distance = self.start_measuring()
+        return distance
     def bouton2_pressed(self):
         self.capture()
 
