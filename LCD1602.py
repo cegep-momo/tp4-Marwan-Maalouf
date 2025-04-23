@@ -10,7 +10,7 @@ class CharLCD1602(object):
         self.BLEN = 1  # turn on/off background light
         self.PCF8574_address = 0x27  # I2C address of the PCF8574 chip.
         self.PCF8574A_address = 0x3f  # I2C address of the PCF8574A chip.
-        self.LCD_ADDR =self.PCF8574_address  
+        self.LCD_ADDR =self.PCF8574_address
     def write_word(self,addr, data):
         temp = data
         if self.BLEN == 1:
