@@ -1,6 +1,5 @@
 
 from gpiozero import Button, DistanceSensor
-from time import sleep
 
 class Platine:
 
@@ -12,7 +11,6 @@ class Platine:
 
     def start_measuring(self):
             distance = round(self.capteur.distance * 100, 2)
-            sleep(5)
             return distance
     def capture(self):
         distance = round(self.capteur.distance * 100, 2)
