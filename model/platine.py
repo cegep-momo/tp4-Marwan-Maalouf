@@ -8,17 +8,14 @@ class Platine:
         self.bouton_demarrer = Button(bouton_demarrer)
         self.bouton_detecter= Button(bouton_detecter)
         self.capteur = DistanceSensor(echo=mouv_echo, trigger=mouv_trigger, max_distance=2)
-
-    def start_measuring(self):
-            distance = round(self.capteur.distance * 100, 2)
-            return distance
+    #mesurer
     def capture(self):
         distance = round(self.capteur.distance * 100, 2)
-        return distance
-
+    #bouton demarrer
     def bouton1_pressed(self):
-        distance = self.start_measuring()
+        distance = self.capture()
         return distance
+    #bouton detecter
     def bouton2_pressed(self):
         self.capture()
 

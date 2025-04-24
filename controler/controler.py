@@ -29,8 +29,10 @@ class Controler:
                     self.compteur = 1
                     time.sleep(1)
             print("Les mesures afficheront a chaque 5 secondes. Appuyer sur le deuxieme bouton pour capturer une certaine mesure souhaitee..")
+            #debut du timer
             dernier_temps = time.time()
-            while self.systeme_actif:
+            while self.systeme_actif: #boucle qui commence le processus
+                
                 temps_courant = time.time()
                 if temps_courant - dernier_temps >= 5:
                     self.date_mesure = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -39,11 +41,12 @@ class Controler:
                     print(self.mesure.afficherMesure())
                     self.view.afficher_mesure(self.distance, self.date_mesure)
                     dernier_temps = temps_courant
-
+                #arrete le processus quand on re-appuye
                 if self.platine.bouton_demarrer.is_pressed and self.compteur == 1:
                     print("Arret du systeme")
                     self.view.clear()
                     return
+                #capturer la distance
                 if self.platine.bouton_detecter.is_pressed:
                     print("Capture!")
                     self.view.clear()
@@ -54,12 +57,14 @@ class Controler:
                         "Date": date_sauvegardee,
                         "Distance": mesure_sauvegardee
                     }
+                    #sauvegarder dans le Json
                     self.tableau.append(capteur)
                     self.SauvegarderJson(self.tableau)
                     time.sleep(0.2)
                 time.sleep(0.1)
         except KeyboardInterrupt:
             self.view.clear()
+    #methode pour sauvegarder dans le Json
     def SauvegarderJson(self, file):
         try:
             with codecs.open("resultats.json", "w", encoding="utf-8") as jsonFile:
