@@ -6,6 +6,7 @@ import time
 class Controler:
 
     def __init__(self, platine):
+        #initialisation des objets
         self.platine = platine
         self.systeme_actif = False
         self.view = View()
@@ -15,10 +16,12 @@ class Controler:
         self.tableau = []
 
     def demarrer_detecteur(self):
+        #try catch pour bien fermer le programme
         try:
             self.view.afficher_message("En attente: ")
             print("Appuyer sur le premier bouton pour commencer le processus.")
             while not self.systeme_actif:
+                #appuyer bouton demarrer la partie
                 if self.compteur == 0 and self.platine.bouton_demarrer.is_pressed:
                     self.view.clear()
                     self.view.afficher_message("Debut proc...")
